@@ -1,0 +1,13 @@
+version: "2"
+services:
+  python:
+    build: .
+    volumes:
+    - .:/opt/
+    command: python /opt/main.py
+  redis:
+    image: redis:3.0.7-alpine
+    volumes:
+    - redis-data:/data
+volumes:
+  redis-data: {}
