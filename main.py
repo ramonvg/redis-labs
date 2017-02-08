@@ -24,7 +24,7 @@ JSON_DOC = """{
     "email": "caseylawson@medesign.com",
     "phone": "+1 (940) 557-3296",
     "address": "944 Pershing Loop, Cliff, Virgin Islands, 5755",
-    "about": "Ut proident et cillum eu. Commodo sint deserunt cupidatat laborum aliquip aliquip. Proident velit laborum anim aliquip elit ad esse nisi et. In enim elit velit minim enim id est magna. Magna pariatur pariatur nostrud duis ut incididunt et in. Ad ex officia dolore nulla non incididunt amet do proident.\r\n",
+    "about": "Ut proident et cillum eu. Commodo sint deserunt cupidatat laborum aliquip aliquip. Proident velit laborum anim aliquip elit ad esse nisi et. In enim elit velit minim enim id est magna. Magna pariatur pariatur nostrud duis ut incididunt et in. Ad ex officia dolore nulla non incididunt amet do proident.\r\n",  # noqa
     "registered": "2014-08-16T12:45:07 -02:00",
     "latitude": 88.984883,
     "longitude": -24.001337,
@@ -55,6 +55,7 @@ JSON_DOC = """{
     "favoriteFruit": "banana"
   },"""
 
+
 def insert_keys():
     for x in range(NUM_KEYS):
         key = f'key_{x}'
@@ -64,24 +65,26 @@ def insert_keys():
 
 def get_tons_of_keys():
     pipe = cache.pipeline()
-    # there's some overhead here
     for x in range(NUM_KEYS):
         pipe.get(f'key_{x}')
     result = pipe.execute()
+
 
 def get_big_key():
     pipe = cache.pipeline()
     pipe.get(BIG_KEY)
     result = pipe.execute()
 
+
 def measure_time(fnx):
     print('running: ', fnx.__name__)
-    start=time()
+    start = time()
     fnx()
-    end=time()
-    print(end-start)
+    end = time()
+    print(end - start)
 
-if '__main__' ==  __name__:
+
+if '__main__' == __name__:
     insert_keys()
     measure_time(get_tons_of_keys)
     measure_time(get_big_key)
