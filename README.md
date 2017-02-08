@@ -3,6 +3,6 @@
 
 # results on my computer
 running:  get_tons_of_keys
-0.5964813232421875
+0.5600669384002686
 running:  get_big_key
-0.00020623207092285156
+0.0002620220184326172

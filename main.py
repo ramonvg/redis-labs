@@ -66,8 +66,7 @@ def get_tons_of_keys():
     pipe = cache.pipeline()
     # there's some overhead here
     for x in range(NUM_KEYS):
-        key = f'key_{x}'
-        pipe.get(key)
+        pipe.get(f'key_{x}')
     result = pipe.execute()
 
 def get_big_key():
